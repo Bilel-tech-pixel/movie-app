@@ -36,7 +36,8 @@ class App extends React.Component{
       }
   ],
   rating:1,
-  keyword:""
+  keyword:"",
+  isLoading:true
   }
   addMovie = (movie) =>{
     this.setState({
@@ -53,12 +54,17 @@ class App extends React.Component{
       rating : rate
     })
   }
+  componentDidMount() {
+    setTimeout(()=>{
+      this.setState({isLoading:false})
+    },5000);
+  }
   render() {
      return (
     <div className="container">
       <Search search={y=>this.getkeyword(y)} />
       <Rating rating={z=>this.getRating(z)}  />
-      <ListMovies movies={this.state.movies.filter(el => el.rating >= this.state.rating && el.title.toLowerCase().includes(this.state.keyword.toLowerCase().trim()))}/> 
+      <ListMovies isloading={this.state.isLoading} movies={this.state.movies.filter(el => el.rating >= this.state.rating && el.title.toLowerCase().includes(this.state.keyword.toLowerCase().trim()))}/> 
       <AddModal add = {(movie) => this.addMovie(movie)} />
     </div>
   );

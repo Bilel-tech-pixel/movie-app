@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.rrrr{
+  transition: 0.5s all;
+}
+.rrrr:hover{
+  transform: translateY(-10px)
+}
+.img-plot{
+  width: 200px;
+  height: 250px;
+}
+
